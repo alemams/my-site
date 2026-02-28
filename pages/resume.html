@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume - Sam Alemam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animation.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <nav class="navbar qms-fade-in">
+    <div class="nav-logo">
+      <a href="../index.html">Sam Alemam</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog/blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="connect.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="resume-section qms-slide-in">
+      <h2 class="section-title">My Journey</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>📍 Damascus, Syria</h3>
+            <p>Born and raised. Where it all began.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>✈️ Turkey</h3>
+            <p>Transition years. New experiences. Adapted fast.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>🇨🇦 Canada — 2017</h3>
+            <p>Started from scratch. High school. Learned English. Kept moving.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>🎓 Cybersecurity Graduate</h3>
+            <p>Earned my diploma. Tech became my path.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>🧠 Still Learning</h3>
+            <p>Working on personal projects, building my dream site (this one!).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-actions">
+        <a href="../docs/resume.pdf" class="btn-glow" download>Download Resume PDF</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer qms-slide-up">
+    <p>© <span id="year"></span> Sam Alemam. Built with 💻 and dreams.</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

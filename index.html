@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - Sam Alemam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS (root-safe relative paths) -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar qms-fade-in">
+    <div class="nav-logo">
+      <a href="index.html">Sam Alemam</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog/blog.html">Blog</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/resume.html">Resume</a></li>
+      <li><a href="pages/connect.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section class="hero-section qms-fade-in">
+      <div class="hero-text">
+        <h1 class="glow-text">Dreamer. Traveler.</h1>
+        <p class="subtext">From Damascus to Canada — through chaos, code, and commitment.</p>
+        <p class="subtext">Built with loyalty. Sharpened by life.</p>
+      </div>
+
+      <p class="map-caption qms-slide-up" style="
+        font-size: 1.1rem;
+        color: #9ddfff;
+        font-style: italic;
+        text-align: center;
+        margin-top: 2rem;">
+        🧭 Damascus → Istanbul → Halifax → Calgary
+      </p>
+
+      <div class="quote-box qms-slide-up">
+        <blockquote>
+          <p>"Love what you do to do what you love"</p>
+          <p dir="rtl" lang="ar">"حبّ ما تعمل، حتى تعمل ما تحبّ"</p>
+          <footer>– My Uncle</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="driver-section qms-fade-in">
+      <h2 class="section-title">Fuel: 98% Passion, 2% Sleep</h2>
+      <p class="subtext">Driving clears my head. Coding sharpens it. That’s the balance I live by.</p>
+
+      <div class="qms-slide-up" style="
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        text-align: center;
+        color: #9ddfff;
+        text-shadow: 0 0 6px hsla(210, 70.1%, 58%, 0.5);">
+        🚗💨 “Night drives. Bright thoughts. Sharp mind.”
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer qms-slide-up">
+    <p>© <span id="year"></span> Sam Alemam. Built with 💻 and dreams.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
