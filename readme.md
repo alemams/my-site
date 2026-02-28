@@ -17,3 +17,6 @@ Welcome to the official personal website of **Sam Alemam** — a cybersecurity g
 This is a **fully static portfolio site** — no frameworks, no CMS, no backends. Just clean HTML, CSS, and JavaScript with dark mode and smooth animations.
 
 # my-site
+# my-site
+# my-site
+# my-site
