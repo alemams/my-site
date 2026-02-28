@@ -7,12 +7,15 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/components.css" />
   <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="stylesheet" herf="../css/layout.cc" />
   <link rel="stylesheet" href="../css/animation.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Fira+Code&display=swap" rel="stylesheet">
-  
+  <style>
+    /* TEMPORARY DEBUGGING - REMOVE LATER */
+    /* * { border: 1px solid rgba(255, 0, 0, 0.3) !important; } */
+  </style>
 </head>
 <body class="dark">
 <div class="page-wrapper">
@@ -22,10 +25,10 @@
     <div class="nav-logo">
       <a href="../index.html">Sam Alemam</a>
     </div>
-     <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navMenu">
       <li><a href="../index.html">Home</a></li>
-      <li><a href="../blog/blog.html">Blog</a></li>
+      <li><a href="blog/blog.html">Blog</a></li>
       <li><a href="../pages/about.html">About</a></li>
       <li><a href="../pages/resume.html">Resume</a></li>
       <li><a href="../pages/connect.html">Contact</a></li>
@@ -47,7 +50,7 @@
 
       <!-- Author Info -->
       <div class="author-card">
-        <div class="author-avatar" aria-hidden="true">SA</div>
+        <img src="../assets/sam-profile.jpg" alt="Sam Alemam">
         <div>
           <strong>Sam Alemam</strong><br>
           <span>Tech Dreamer. Code Crafter. Street Philosopher.</span>
@@ -56,7 +59,7 @@
 
       <!-- Back to Blog -->
       <div class="back-to-blog">
-        <a href="../blog/blog.html" class="btn-glow">← Back to Blog</a>
+        <a href="blog/blog.html" class="btn-glow">← Back to Blog</a>
       </div>
     </section>
   </main>
@@ -68,63 +71,6 @@
 </div>
 
 <!-- Scripts -->
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    if (!menu) return;
-    menu.classList.toggle("show");
-  }
 
-  function estimateReadTime(text) {
-    const wordsPerMinute = 200;
-    const words = text.trim().split(/\s+/).length;
-    return `${Math.ceil(words / wordsPerMinute)} min read`;
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  const rawPostSlug = params.get("post");
-
-  function getSafeSlug(slug) {
-    if (!slug) return null;
-    if (!/^[a-z0-9-]+$/i.test(slug)) return null;
-    return slug;
-  }
-
-  const postSlug = getSafeSlug(rawPostSlug);
-
-  if (postSlug) {
-    fetch(`posts/${postSlug}.html`)
-      .then((response) => {
-        if (!response.ok) throw new Error("Post not found.");
-        return response.text();
-      })
-      .then((html) => {
-        document.getElementById("blog-post").innerHTML = html;
-
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = html;
-
-        const textContent = tempDiv.textContent || tempDiv.innerText || "";
-        document.getElementById("read-time").textContent = estimateReadTime(textContent);
-      })
-      .catch(() => {
-        document.getElementById("blog-post").innerHTML = `
-          <h2>Post Not Found</h2>
-          <p>Try <a href="blog.html">browsing other articles</a>.</p>
-        `;
-      });
-  }  else {
-    document.getElementById("blog-post").innerHTML = `
-      <h2>Choose a Post</h2>
-      <p>Please open an article from the <a href="blog.html">blog listing page</a>.</p>
-    `;
-    document.getElementById("read-time").textContent = "";
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-  });
-</script>
 </body>
 </html>
