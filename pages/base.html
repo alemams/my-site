@@ -14,31 +14,27 @@
   <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
+  
 <body class="dark">
+  <nav class="navbar qms-fade-in">
+    <div class="nav-logo">
+      <a href="../index.html">Sam Alemam</a>
+    </div>
 
-  <!-- Navbar -->
- <nav class="navbar qms-fade-in">
-  <div class="nav-logo">
-    <a href="/index.html">Sam Alemam</a>
-  </div>
+    <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
 
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-  <ul class="nav-links" id="navMenu">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/blog/blog.html">Blog</a></li>
-      <li><a href="/pages/about.html">About</a></li>
-      <li><a href="/pages/resume.html">Resume</a></li>
-      <li><a href="/pages/connect.html">Contact</a></li>
-    
-  </ul>
-</nav>
-
+    <ul class="nav-links" id="navMenu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog/blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="connect.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Main Content -->
   <main>
-    <!-- You’ll paste each page's unique content here -->
+     <!-- Page content -->
   </main>
 
   <!-- Footer -->
@@ -47,33 +43,7 @@
   </footer>
 
   <!-- Dark Mode + Year Script -->
-   <script>
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("darkMode", document.body.classList.contains("dark"));
-  }
-
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    menu.classList.toggle("show");
-  }
-
-  window.onload = function () {
-    // Dark mode persistence
-    if (localStorage.getItem("darkMode") === "true") {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-
-    // Update year if footer exists
-    const year = document.getElementById("year");
-    if (year) {
-      year.textContent = new Date().getFullYear();
-    }
-  };
-</script>
-
+    <script src="../js/main.js"></script>
 
 </body>
 </html>
