@@ -71,15 +71,9 @@
 
 <!-- Scripts -->
 <script>
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("darkMode", isDark);
-    document.querySelector(".dark-toggle").textContent = isDark ? "☀️" : "🌙";
-  }
-
   function toggleMenu() {
     const menu = document.getElementById("navMenu");
+    if (!menu) return;
     menu.classList.toggle("show");
   }
 
@@ -89,40 +83,36 @@
     return `${Math.ceil(words / wordsPerMinute)} min read`;
   }
 
-  // Load blog post by slug
   const params = new URLSearchParams(window.location.search);
   const postSlug = params.get("post");
 
   if (postSlug) {
-    fetch(`/blog/posts/${postSlug}.html`)
-      .then(response => {
+    fetch(`posts/${postSlug}.html`)
+      .then((response) => {
         if (!response.ok) throw new Error("Post not found.");
         return response.text();
       })
-      .then(html => {
+      .then((html) => {
         document.getElementById("blog-post").innerHTML = html;
+
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = html;
+
         const textContent = tempDiv.textContent || tempDiv.innerText || "";
-        const readTime = estimateReadTime(textContent);
-        document.getElementById("read-time").textContent = readTime;
+        document.getElementById("read-time").textContent = estimateReadTime(textContent);
       })
       .catch(() => {
         document.getElementById("blog-post").innerHTML = `
           <h2>Post Not Found</h2>
-          <p>Try <a href="/blog/blog.html">browsing other articles</a>.</p>
+          <p>Try <a href="blog.html">browsing other articles</a>.</p>
         `;
       });
   }
 
-  // On Load
-  window.onload = function () {
-    document.getElementById("year").textContent = new Date().getFullYear();
-    if (localStorage.getItem("darkMode") === "true") {
-      document.body.classList.add("dark");
-      document.querySelector(".dark-toggle").textContent = "☀️";
-    }
-  };
+  window.addEventListener("DOMContentLoaded", () => {
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
+  });
 </script>
 </body>
 </html>
