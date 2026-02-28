@@ -7,14 +7,11 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/components.css" />
   <link rel="stylesheet" href="../css/blog.css" />
   <link rel="stylesheet" href="../css/animation.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Fira+Code&display=swap" rel="stylesheet">
-  <style>
-    /* TEMPORARY DEBUGGING - REMOVE LATER */
-    /* * { border: 1px solid rgba(255, 0, 0, 0.3) !important; } */
-  </style>
 </head>
 <body class="dark">
 <div class="page-wrapper">
@@ -24,7 +21,7 @@
     <div class="nav-logo">
       <a href="../index.html">Sam Alemam</a>
     </div>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
     <ul class="nav-links" id="navMenu">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../blog/blog.html">Blog</a></li>
@@ -49,7 +46,7 @@
 
       <!-- Author Info -->
       <div class="author-card">
-        <img src="../assets/sam-profile.jpg" alt="Sam Alemam">
+        <div class="author-avatar" aria-hidden="true">SA</div>
         <div>
           <strong>Sam Alemam</strong><br>
           <span>Tech Dreamer. Code Crafter. Street Philosopher.</span>
@@ -84,7 +81,15 @@
   }
 
   const params = new URLSearchParams(window.location.search);
-  const postSlug = params.get("post");
+  const rawPostSlug = params.get("post");
+
+  function getSafeSlug(slug) {
+    if (!slug) return null;
+    if (!/^[a-z0-9-]+$/i.test(slug)) return null;
+    return slug;
+  }
+
+  const postSlug = getSafeSlug(rawPostSlug);
 
   if (postSlug) {
     fetch(`posts/${postSlug}.html`)
@@ -107,6 +112,12 @@
           <p>Try <a href="blog.html">browsing other articles</a>.</p>
         `;
       });
+  } else {
+    document.getElementById("blog-post").innerHTML = `
+      <h2>Choose a Post</h2>
+      <p>Please open an article from the <a href="blog.html">blog listing page</a>.</p>
+    `;
+    document.getElementById("read-time").textContent = "";
   }
 
   window.addEventListener("DOMContentLoaded", () => {
