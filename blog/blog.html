@@ -27,7 +27,7 @@
 
   <ul class="nav-links" id="navMenu">
       <li><a href="../index.html">Home</a></li>
-      <li><a href="blog/blog.html">Blog</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="../pages/about.html">About</a></li>
       <li><a href="../pages/resume.html">Resume</a></li>
       <li><a href="../pages/connect.html">Contact</a></li>
@@ -126,7 +126,7 @@
   <footer class="footer qms-slide-up">
     <p>© <span id="year"></span> Sam Alemam. Built with <span aria-label="love">💻</span> and dreams.</p>
   </footer>
-</div>
+
 
 <!-- Scripts -->
 <script>
@@ -139,8 +139,10 @@
     
     // Update button icon
     const darkToggle = document.querySelector(".dark-toggle");
-    darkToggle.textContent = isDark ? "☀️" : "🌙";
-    darkToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+   if (darkToggle) {
+      darkToggle.textContent = isDark ? "☀️" : "🌙";
+      darkToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    }
     
     // Dispatch event for other components
     document.dispatchEvent(new CustomEvent("darkModeChange", { detail: { isDark } }));
@@ -162,7 +164,10 @@
     // Set dark mode from localStorage
     if (localStorage.getItem("darkMode") === "true") {
       document.body.classList.add("dark");
-      document.querySelector(".dark-toggle").textContent = "☀️";
+      const darkToggle = document.querySelector(".dark-toggle");
+      if (darkToggle) {
+        darkToggle.textContent = "☀️";
+      
     }
 
     // Set current year
