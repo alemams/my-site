@@ -10,8 +10,7 @@ body {
   color: var(--text-primary);
 }
 
-body.dark,
-html[data-theme="dark"] {
+body {
   background-color: var(--color-bg-dark);
   color: var(--text-dark);
 }
@@ -43,11 +42,7 @@ html[data-theme="dark"] {
   box-sizing: border-box;
 }
 
-body:not(.dark) .blog-wrapper {
-  background-color: var(--color-bg-light);
-}
-
-body.dark .blog-wrapper {
+.blog-wrapper {
   background-color: var(--color-bg-dark-secondary, #141414);
 }
 
@@ -248,6 +243,31 @@ body.dark .blog-wrapper {
 
 .back-to-blog a:hover {
   color: var(--hover);
+}
+
+/* ===== Always-on readability (no night mode toggle) ===== */
+.blog-wrapper,
+.blog-wrapper p,
+.blog-wrapper li,
+.blog-card,
+.blog-card .post-excerpt,
+.blog-card .post-date,
+#read-time {
+  color: #f2f6ff;
+}
+
+.blog-wrapper .blog-meta,
+.blog-read-time,
+.blog-card .post-date {
+  color: #c7d2e6;
+}
+
+.blog-wrapper h1,
+.blog-wrapper h2,
+.blog-wrapper h3,
+.blog-card h2,
+.blog-card h2 a {
+  color: #ffffff;
 }
 
 /* ===== Responsive ===== */
