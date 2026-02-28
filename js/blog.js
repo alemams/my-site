@@ -33,16 +33,46 @@ function loadBlogPost() {
     return;
   }
 
+  function copyCode(button) {
+  const codeElement = button?.parentElement?.querySelector("code");
+  if (!codeElement) return;
+
+  const text = codeElement.innerText || codeElement.textContent || "";
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      const originalText = button.textContent;
+      button.textContent = "Copied!";
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1200);
+    })
+    .catch(() => {
+      button.textContent = "Failed";
+      setTimeout(() => {
+        button.textContent = "Copy";
+      }, 1200);
+    });
+}
+
+function extractPostContent(html) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const article = doc.querySelector("article.blog-wrapper, article");
+  const renderedHtml = article ? article.outerHTML : (doc.body?.innerHTML || html);
+  const textContent = article ? (article.textContent || "") : (doc.body?.textContent || "");
+  return { renderedHtml, textContent };
+}
+
+
   fetch(`posts/${postSlug}.html`)
     .then((response) => {
       if (!response.ok) throw new Error("Post not found");
       return response.text();
     })
     .then((html) => {
-      postContainer.innerHTML = html;
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = html;
-      const textContent = tempDiv.textContent || tempDiv.innerText || "";
+          const { renderedHtml, textContent } = extractPostContent(html);
+      postContainer.innerHTML = renderedHtml;
       readTimeElement.textContent = estimateReadTime(textContent);
     })
     .catch(() => {
