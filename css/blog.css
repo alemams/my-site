@@ -591,6 +591,34 @@ body.dark .blog-wrapper {
   background: var(--accent);
 }
 
+/* ===== Dark mode readability adjustments ===== */
+body.dark .blog-header .subtext,
+body.dark .blog-card .blog-meta,
+body.dark .blog-wrapper .blog-meta,
+body.dark #read-time {
+  color: #c7d2e6;
+}
+
+body.dark .blog-card .blog-snippet,
+body.dark .blog-wrapper,
+body.dark .blog-post-content,
+body.dark .blog-wrapper p,
+body.dark .blog-wrapper li,
+body.dark .blog-post-content p,
+body.dark .blog-post-content li,
+body.dark .blog-post-content code {
+  color: #f2f6ff;
+}
+
+body.dark .blog-wrapper h1,
+body.dark .blog-wrapper h2,
+body.dark .blog-wrapper h3,
+body.dark .blog-post-content h1,
+body.dark .blog-post-content h2,
+body.dark .blog-post-content h3 {
+  color: #ffffff;
+}
+
 .blog-card h2 { color: var(--accent); margin-bottom: 1rem; font-size: 1.8rem; }
 .blog-card .post-date { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; display: block; }
 .blog-card .post-excerpt { color: var(--text-primary); line-height: 1.6; margin-bottom: 1.5rem; }
